@@ -31,12 +31,25 @@ def count_letters(text):
 
     for string in text:
         for char in string:
-            if not char.isalpha():
+            if not is_alphanum(char):
                 break
             else:
                 freq[letter_index(char)] += 1
 
     return freq
+
+'''
+Input: a character
+Output: a boolean
+Does: checks whether the character is an letter of the alphabet
+'''
+def is_alphanum(c):
+    if ord(c) >= 65 and ord(c) <= 90:
+        return True
+    elif ord(c) >= 97 and ord(c) <= 122:
+        return True
+
+    return False
 
 '''
 Input: a character
@@ -64,10 +77,13 @@ try:
     source = requests.get(sys.argv[1]).text
 except Exception as e:
     print(f"Error: {e}")
-    #exit(1) 
+    exit(1) 
 
-with open('simple.html') as html_file:
-    soup = BeautifulSoup(html_file, 'lxml') 
+try:
+    soup = BeautifulSoup(source, 'lxml') 
+except Exception as e:
+    print(f"Error: {e}")
+    exit(1)
 
 text = soup.get_text().split('\n')
 
