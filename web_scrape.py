@@ -1,7 +1,21 @@
+'''
+Author: Alexander Zsikla
+Name: web_scrape.py
+Fall 2019
+
+Description: 
+
+'''
+
 from bs4 import BeautifulSoup
 import requests
 import sys
 
+'''
+Input:
+Output:
+Does:
+'''
 def remove_newline(s):
     for i in range(len(s)):
         if s[i] == '\n':
@@ -9,6 +23,11 @@ def remove_newline(s):
     
     print(s)
 
+'''
+Input:
+Output:
+Does:
+'''
 def count_vowels(s):
     pass
 
