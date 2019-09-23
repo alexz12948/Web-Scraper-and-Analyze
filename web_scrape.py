@@ -3,13 +3,15 @@ Author: Alexander Zsikla
 Name: web_scrape.py
 Fall 2019
 
-Description: 
+Description: Counts the frequency of all the letters on a webpage 
+             and exports it to a CSV file
 
 '''
 
 from bs4 import BeautifulSoup
 import requests
 import sys
+import csv
 
 '''
 Input: a list of lines from an html file
@@ -67,7 +69,15 @@ Does: prints out the frequency of each character to the user
 '''
 def print_freq(freq):
     for i in range(len(freq)):
-        print(f"{chr(i + 65)} is in the file {freq[i]} time(s)")
+        print(f"{chr(i + 65)} is in the file {str(freq[i]).ljust(4)} time(s)")
+
+'''
+Input: a frequency list of characters
+Output: N/A
+Does: writes the frequency list to a csv
+'''
+def write_csv(freq):
+    pass
 
 if len(sys.argv) != 2:
     print("Usage: python3 ./web_scrape.py <URL>")
