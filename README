@@ -1,0 +1,10 @@
+/*
+ * Author: Alexander Zsikla
+ * Date: Fall 2019
+ * Project: Analyze Website Text
+ *
+ * Description: Takes in multiple websites and creates a histogram
+ * for frequency of each letter
+ *
+ */
+
