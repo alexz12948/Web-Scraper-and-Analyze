@@ -17,7 +17,11 @@ fi
 
 mkdir CSV_Files
 
-python3 ./web_scrape.py $1
+for URL in $@; do
+	if [ $URL != "-A" ]; then
+		python3 ./web_scrape.py $URL
+	fi
+done
 
 mv *csv CSV_Files/
 
