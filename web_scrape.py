@@ -72,13 +72,31 @@ def print_freq(freq):
         print(f"{chr(i + 65)} is in the file {str(freq[i]).ljust(4)} time(s)")
 
 '''
+Input: a URL
+Returns: the domain
+Does: Parses the URL for the domain
+'''
+def find_domain_name(URL):
+    front = URL.rindex('www.')
+    end = URL.index('.com')
+
+    return URL[front + 4:end]
+
+'''
 Input: a frequency list of characters
 Output: N/A
 Does: writes the frequency list to a csv
 '''
-def write_csv(freq):
-    pass
+def write_csv(freq, filename):
+    with open(f"{filename}.csv" , "w") as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',')
 
+        csv_writer.writerow(["Letter", "Frequency"])
+
+        for i in range(len(freq)):
+            csv_writer.writerow([chr(i + 65), freq[i]])
+
+# Main()
 if len(sys.argv) != 2:
     print("Usage: python3 ./web_scrape.py <URL>")
     exit(1)
@@ -96,11 +114,12 @@ except Exception as e:
     exit(1)
 
 text = soup.get_text().split('\n')
-
 remove_newline(text)
-
 freq = count_letters(text)
 
 print_freq(freq)
+
+filename = find_domain_name(sys.argv[1])
+write_csv(freq, filename)
 
 exit(0)
