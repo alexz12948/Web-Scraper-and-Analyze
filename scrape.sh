@@ -33,6 +33,5 @@ for phrase in $@; do
 done
 
 if [ $flag == 1 ]; then
-	cd CSV_Files
-	python3 ./analyze.py *csv
+	python3 ./analyze.py CSV_Files/*csv
 fi
